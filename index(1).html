@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jessica Nenodji Malloum — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2b45;
+    --blue: #1a5276;
+    --accent: #2e86c1;
+    --sky: #5dade2;
+    --light: #d6eaf8;
+    --cream: #f8fbff;
+    --white: #ffffff;
+    --text: #1a2530;
+    --muted: #5d7a8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,43,69,0.97);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 60px;
+    border-bottom: 1px solid rgba(93,173,226,0.2);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    color: var(--sky);
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--sky); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 80px 5% 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(46,134,193,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(93,173,226,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-content {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    position: relative; z-index: 1;
+    width: 100%;
+  }
+  .hero-text { animation: fadeUp 0.8s ease both; }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(93,173,226,0.15);
+    border: 1px solid rgba(93,173,226,0.3);
+    color: var(--sky);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+  .hero-name span { color: var(--sky); }
+  .hero-title {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 2rem;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s;
+    border: none; cursor: pointer;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: var(--sky); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,134,193,0.35); }
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--sky); color: var(--sky); }
+
+  .hero-visual {
+    display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .photo-frame {
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    padding: 5px;
+    background: rgba(46,134,193,0.1);
+    box-shadow: 0 0 0 1px rgba(93,173,226,0.2), 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .photo-frame img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: brightness(1.05) contrast(1.05);
+  }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: white;
+  }
+  .stats-row {
+    display: flex; gap: 2rem;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--sky);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 90px 5%;
+  }
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    color: var(--navy);
+    margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+
+  /* COMPÉTENCES */
+  #competences { background: var(--white); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-card {
+    background: var(--cream);
+    border: 1px solid #e0ecf5;
+    border-radius: 12px;
+    padding: 1.8rem;
+    transition: all 0.25s;
+  }
+  .skill-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(26,82,118,0.1);
+  }
+  .skill-card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .skill-card h3 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .tag {
+    background: var(--light);
+    color: var(--blue);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(26,82,118,0.15);
+  }
+
+  /* PROJETS */
+  #projets { background: var(--cream); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--white);
+    border: 1px solid #e0ecf5;
+    border-radius: 14px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--sky));
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(26,82,118,0.12);
+    border-color: var(--accent);
+  }
+  .project-emoji { font-size: 2rem; margin-bottom: 1rem; }
+  .project-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+  .project-card p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tech-tag {
+    background: rgba(46,134,193,0.1);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* FORMATION */
+  #formation { background: var(--white); }
+  .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  .timeline-date {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    padding-top: 0.2rem;
+    text-align: right;
+  }
+  .timeline-body {
+    border-left: 2px solid var(--light);
+    padding-left: 1.5rem;
+    padding-bottom: 1.5rem;
+    position: relative;
+  }
+  .timeline-body::before {
+    content: '';
+    position: absolute;
+    left: -6px; top: 6px;
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .timeline-body h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 0.2rem;
+  }
+  .timeline-body .org {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .timeline-body p {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.7;
+    margin-top: 0.5rem;
+  }
+
+  /* PRIX */
+  #prix { background: var(--navy); }
+  #prix .section-title { color: var(--white); }
+  #prix .section-label { color: var(--sky); }
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .award-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(93,173,226,0.2);
+    border-radius: 14px;
+    padding: 2rem;
+    transition: all 0.3s;
+    text-align: center;
+  }
+  .award-card:hover {
+    background: rgba(93,173,226,0.1);
+    border-color: var(--sky);
+    transform: translateY(-4px);
+  }
+  .award-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .award-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .award-card p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--cream); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-info h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+  .contact-info p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .contact-items { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item {
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .contact-item-icon {
+    width: 42px; height: 42px;
+    background: var(--light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .contact-item-text a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  .contact-item-text a:hover { text-decoration: underline; }
+  .contact-item-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+  .languages-card {
+    background: var(--white);
+    border: 1px solid #e0ecf5;
+    border-radius: 14px;
+    padding: 2rem;
+  }
+  .languages-card h3 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+  .lang-item { margin-bottom: 1.2rem; }
+  .lang-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .lang-name { font-size: 0.9rem; font-weight: 500; color: var(--navy); }
+  .lang-level { font-size: 0.8rem; color: var(--muted); }
+  .lang-bar {
+    height: 5px;
+    background: var(--light);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .lang-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--sky));
+    border-radius: 3px;
+    transition: width 1s ease;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(93,173,226,0.1);
+  }
+  footer span { color: var(--sky); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-content { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+    .hero-visual { order: -1; }
+    .hero-desc { margin: 0 auto 2rem; }
+    .hero-cta { justify-content: center; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .timeline-date { text-align: left; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Jessica N.M.</div>
+  <ul class="nav-links">
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#formation">Parcours</a></li>
+    <li><a href="#prix">Distinctions</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-tag">✦ Disponible pour stage & opportunités</div>
+      <h1 class="hero-name">Nenodji<br><span>Jessica</span></h1>
+      <p class="hero-title">Étudiante L3 Maths & Informatique · Future Chef de Projet IT</p>
+      <p class="hero-desc">
+        Passionnée par la transformation digitale, l'analyse de données et la gestion de projets numériques. 
+        Je combine rigueur mathématique et vision technologique pour créer des solutions innovantes.
+      </p>
+      <div class="hero-cta">
+        <a href="#projets" class="btn-primary">Voir mes projets</a>
+        <a href="mailto:malloumjessica@gmail.com" class="btn-outline">Me contacter</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="photo-frame">
+        <div class="photo-placeholder">JN</div>
+      </div>
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Projets</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2×</div>
+          <div class="stat-label">Meilleure étudiante</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">L3</div>
+          <div class="stat-label">Maths-Info</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
+  <div class="section-inner">
+    <div class="section-label reveal">Expertise</div>
+    <h2 class="section-title reveal">Compétences techniques</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">💻</div>
+        <h3>Langages & Outils</h3>
+        <div class="tags">
+          <span class="tag">Java</span>
+          <span class="tag">C</span>
+          <span class="tag">SQL</span>
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">PHP</span>
+          <span class="tag">R</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">🛠️</div>
+        <h3>Frameworks & Librairies</h3>
+        <div class="tags">
+          <span class="tag">Git/GitHub</span>
+          <span class="tag">CSPro</span>
+          <span class="tag">LaTeX</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">📊</div>
+        <h3>Domaines</h3>
+        <div class="tags">
+          <span class="tag">Algorithmique</span>
+          <span class="tag">Bases de données</span>
+          <span class="tag">Calcul numérique</span>
+          <span class="tag">Analyse de données</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-card-icon">🎯</div>
+        <h3>Soft Skills</h3>
+        <div class="tags">
+          <span class="tag">Leadership</span>
+          <span class="tag">Gestion de projet</span>
+          <span class="tag">Coordination</span>
+          <span class="tag">Veille technologique</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="section-inner">
+    <div class="section-label reveal">Réalisations</div>
+    <h2 class="section-title reveal">Mes projets</h2>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-emoji">📊</div>
+        <h3>Analyse de données CSV</h3>
+        <p>Analyse statistique complète d'un fichier CSV avec visualisation des données. Exploration, nettoyage et représentation graphique de données réelles.</p>
+        <div class="project-tech">
+          <span class="tech-tag">R</span>
+          <span class="tech-tag">Statistiques</span>
+          <span class="tech-tag">Visualisation</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-emoji">🏪</div>
+        <h3>Application quincaillerie</h3>
+        <p>Conception et développement d'une mini application de gestion d'une quincaillerie : stock, clients, commandes et facturation.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Java</span>
+          <span class="tech-tag">SQL</span>
+          <span class="tech-tag">Algorithmique</span>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-emoji">🏛️</div>
+        <h3>Plateforme de plaintes citoyennes</h3>
+        <p>Application web permettant aux citoyens de soumettre et suivre leurs plaintes auprès de l'administration. Gestion complète du cycle de vie des requêtes.</p>
+        <div class="project-tech">
+          <span class="tech-tag">PHP</span>
+          <span class="tech-tag">HTML/CSS</span>
+          <span class="tech-tag">SQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION & EXPÉRIENCE -->
+<section id="formation">
+  <div class="section-inner">
+    <div class="section-label reveal">Parcours</div>
+    <h2 class="section-title reveal">Formation & Expérience</h2>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2023 — 2026</div>
+        <div class="timeline-body">
+          <h3>Licence 3 — Mathématiques & Informatique</h3>
+          <div class="org">UCAO-UUT, Lomé, Togo</div>
+          <p>Formation pluridisciplinaire couvrant l'algorithmique, les bases de données, le calcul numérique et le développement logiciel.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2024 — 2025</div>
+        <div class="timeline-body">
+          <h3>Tutrice en Algorithmique</h3>
+          <div class="org">Programme Entraide Étudiante — UCAO-UUT</div>
+          <p>Soutien pédagogique en algorithme et analyse pour les étudiants de L1. Animation de séances de travaux pratiques et correction d'exercices.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2024 — 2026</div>
+        <div class="timeline-body">
+          <h3>Déléguée de classe</h3>
+          <div class="org">2ᵉ et 3ᵉ année de licence — UCAO-UUT</div>
+          <p>Coordination entre étudiants et administration. Organisation et transmission des informations académiques. Représentation des intérêts des étudiants.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2023 — présent</div>
+        <div class="timeline-body">
+          <h3>Membre active</h3>
+          <div class="org">Union des étudiants Tchadiens à UCAO-UUT</div>
+          <p>Participation active à la vie associative, organisation d'événements culturels et solidarité entre étudiants.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-date">2023</div>
+        <div class="timeline-body">
+          <h3>Baccalauréat Série C</h3>
+          <div class="org">Complexe scolaire Frères Polycarpe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIX -->
+<section id="prix">
+  <div class="section-inner">
+    <div class="section-label reveal">Récompenses</div>
+    <h2 class="section-title reveal">Prix & Distinctions</h2>
+    <div class="awards-grid">
+      <div class="award-card reveal">
+        <div class="award-icon">🥇</div>
+        <h3>Meilleure étudiante Tchadienne</h3>
+        <p>UCAO-UUT — Promotion 2023–2024<br>Distinction académique d'excellence</p>
+      </div>
+      <div class="award-card reveal">
+        <div class="award-icon">🏆</div>
+        <h3>Meilleure étudiante Tchadienne</h3>
+        <p>UCAO-UUT — Promotion 2024–2025<br>Distinction académique d'excellence (2ᵉ consécutive)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal">Disponible</div>
+    <h2 class="section-title reveal">Prenons contact</h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Je serais ravie d'échanger avec vous !</h3>
+        <p>Étudiante motivée et passionnée, je suis ouverte aux opportunités de stage, de collaboration ou d'apprentissage dans les domaines de la data, du développement et de la gestion de projet IT.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">Téléphone</div>
+              <a href="tel:+22871423557">+228 71 42 35 57</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">Email</div>
+              <a href="mailto:malloumjessica@gmail.com">malloumjessica@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🔗</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">GitHub</div>
+              <a href="https://github.com/" target="_blank">github.com/jessica-nenodji</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <div class="contact-item-label">Localisation</div>
+              <a href="#">Lomé, Togo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="languages-card">
+          <h3>Langues parlées</h3>
+          <div class="lang-item">
+            <div class="lang-header">
+              <span class="lang-name">Français</span>
+              <span class="lang-level">Courant</span>
+            </div>
+            <div class="lang-bar"><div class="lang-fill" style="width: 95%"></div></div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-header">
+              <span class="lang-name">Anglais</span>
+              <span class="lang-level">Intermédiaire</span>
+            </div>
+            <div class="lang-bar"><div class="lang-fill" style="width: 55%"></div></div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-header">
+              <span class="lang-name">Ngambay</span>
+              <span class="lang-level">Courant</span>
+            </div>
+            <div class="lang-bar"><div class="lang-fill" style="width: 90%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Nenodji Malloum Jessica</span> · Étudiante L3 Maths-Info · Lomé, Togo</p>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
